@@ -1,6 +1,8 @@
 	· Mandiant more confident Chinese hackers were behind VMWare hypervisor malware campaign
 			o https://www.scmagazine.com/news/vulnerability-management/mandiant-more-confident-chinese-hackers-were-behind-vmware-hypervisor-malware-campaign
- 
+This article provides details on possible threat actor behind VMWare hypervisor malware campaign. Chinese cyber espionage group UNC3886, also known as APT15, has been identified by Mandiant researchers as the likely perpetrator of a hacking campaign targeting VMWare ESXi hosts, vCenter servers, and Windows virtual machines. The researchers have discovered additional links and increased activity by the group, strengthening their attribution. UNC3886 exploited a zero-day vulnerability (CVE-2023-20867) to gain privileged commands on guest virtual machines without authentication. The researchers focus on providing insights into the group's tactics and methodologies to help defenders identify patterns of malicious behavior. The article doesnt detail further specific TTP's of the malware campaign. 
+
+
 (U) Tactics/Techniques/Procedures:
 	· Behind the Scenes: Unveiling the Hidden Workings of Earth Preta
 			o https://www.trendmicro.com/en_us/research/23/f/behind-the-scenes-unveiling-the-hidden-workings-of-earth-preta.html
