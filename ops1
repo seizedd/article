@@ -6,6 +6,8 @@ This article provides details on possible threat actor behind VMWare hypervisor 
 (U) Tactics/Techniques/Procedures:
 	· Behind the Scenes: Unveiling the Hidden Workings of Earth Preta
 			o https://www.trendmicro.com/en_us/research/23/f/behind-the-scenes-unveiling-the-hidden-workings-of-earth-preta.html
+			
+			this article covers APT Earth Preta and its large-scale phishing campaign. 
 Resource Development
 T1583.004
 Initial Access
@@ -43,20 +45,94 @@ Deobfuscate/Decode Files or Information
 			
 	· Hackers can steal cryptographic keys by video-recording power LEDs 60 feet away
 			o https://arstechnica.com/information-technology/2023/06/hackers-can-steal-cryptographic-keys-by-video-recording-connected-power-leds-60-feet-away/
+
+Researchers have demonstrated a new type of side-channel attack that can leak cryptographic keys by video-recording the power LEDs of targeted devices. Unlike traditional side-channel attacks, this method does not require invasive measures or specialized equipment. By utilizing the rolling shutter feature of video cameras, the researchers captured variations in the brightness and color of power LEDs during cryptographic operations. The attack has the advantage of precision and accuracy, overcoming the latency and noise associated with network-based side-channel attacks. However, the attack has limitations and specific prerequisites, such as the target device having a power LED that correlates with power consumption. The attacker needs constant video recording of the power LED while the cryptographic operation takes place. The attack works on certain devices but may not be effective against high-security settings or devices with hardened security measures. The research findings are considered interesting and important, highlighting the power of video-based cryptanalysis and the potential for future advancements in camera technology to enhance the attack. Manufacturers are recommended to implement countermeasures, but it remains uncertain when these measures will be adopted. In the meantime, individuals can take precautions like covering power LEDs to mitigate the vulnerability.
+
 	· Massive phishing campaign uses 6,000 sites to impersonate 100 brands
 			o https://www.bleepingcomputer.com/news/security/massive-phishing-campaign-uses-6-000-sites-to-impersonate-100-brands/
+
+A massive phishing campaign has been targeting popular apparel, footwear, and clothing brands since June 2022, using fake websites to deceive users into entering their account credentials and financial information. The campaign impersonates over 100 brands, including Nike, Puma, Adidas, and Timberland. Bolster's threat research team discovered the campaign, which relies on thousands of domains and sites, including inactive ones. The campaign experienced a significant increase in activity between January and February 2023, with the addition of 300 new fake sites each month. The scam domains were traced back to specific internet service providers and registered through Alibaba.com Singapore. The phishing sites are designed to closely resemble the official brand websites, featuring realistic content and functional order pages. The exact scam strategy is unclear, but it is suspected that the sites either do not ship the purchased products or provide counterfeit items. Users are advised to exercise caution when searching for official brand websites and to verify URLs through reliable sources such as brand Wikipedia pages or social media channels.
  
 (U) Malware:
 	· Skuld: The Infostealer that Speaks Golang
 			o https://www.trellix.com/en-us/about/newsroom/stories/research/skuld-the-infostealer-that-speaks-golang.html
+
+This new malware strain tries to steal sensitive information from its victims. To accomplish this task, it searches for data stored in applications such as Discord and web browsers; information from the system and files stored in the victim’s folders.
+
+
+Execution
+T1204.002 Malicious File
+T1059.007 Command and Scripting Interpreter: JavaScript
+Defense Evasion
+T1497 Virtualization/Sandbox Evasion: System Checks
+T1562.001 Impair Defenses: Disable or Modify Tools
+T1622 Debugger Evasion
+Credential Access
+T1555.003 Credentials from Password Stores: Credentials from Web Browsers
+T1111 Multi-Factor Authentication Interception
+T1539 Steal Web Session Cookie
+Discovery
+T1033 System Owner/User Discovery
+T1012 Query Registry
+T1057 Process Discovery
+T1083 File and Directory Discovery
+T1217 Browser Information Discovery
+T1082 System Information Discovery
+T1016 System Network Configuration Discovery
+Collection
+T1113 Screen Capture
+T1115 Clipboard Data
+T1560 Archive Collected Data
+Command and Control
+T1071.001 Application Layer Protocol: Web Protocols
+T1573.002 Encrypted Channel: Asymmetric Cryptography
+T1102.003 Web Service: One-Way Communication
+Exfiltration
+T1567 Exfiltration Over Web Service
+T1020 Automated Exfiltration
+Impact
+T1489 Service Stop
+
  
 (U) Vulnerabilities/Exploits:
 	· VMware ESXi Zero-Day Used by Chinese Espionage Actor to Perform Privileged Guest Operations on Compromised Hypervisors
 			o https://www.mandiant.com/resources/blog/vmware-esxi-zero-day-bypass
+
+In late 2022, Mandiant published details surrounding a novel malware system deployed by UNC3886, a Chinese cyber espionage group, which impacted VMware ESXi hosts, vCenter servers, and Windows virtual machines (VM). Through continued security research and investigations over the past year, Mandiant has discovered additional techniques UNC3886 has utilized across multiple organizations to keep out of the sights of EDR solutions including: 
+
+    Harvesting credentials for service accounts from a vCenter Server for all connected ESXi hosts from the embedded vPostgreSQL server built into vCenter Server Appliance 
+    Exploiting a zero-day vulnerability (CVE-2023-20867) that enabled the execution of privileged commands across Windows, Linux, and PhotonOS (vCenter) guest VMs without authentication of guest credentials from a compromised ESXi host and no default logging on guest VMs 
+    Deploying backdoors on ESXi hosts using an alternative socket address family, VMCI, for lateral movement and continued persistence. This address family enabled direct reconnection from any guest VM to the compromised ESXi host’s backdoor regardless of network segmentation or firewall rules in place. 
+    Continuing to tamper with and disable logging services on impacted systems, presenting additional challenges to investigating UNC3886 in a compromised environment.  
+    
+        Harvesting credentials for service accounts from a vCenter Server for all connected ESXi hosts from the embedded vPostgreSQL server built into vCenter Server Appliance:
+        Technique: Credential Access
+            Sub-technique: OS Credential Dumping (T1003)
+            Sub-technique: Credentials from Password Stores (T1555)
+
+    Exploiting a zero-day vulnerability (CVE-2023-20867) that enabled the execution of privileged commands across Windows, Linux, and PhotonOS (vCenter) guest VMs without authentication of guest credentials from a compromised ESXi host and no default logging on guest VMs:
+        Technique: Exploitation of Vulnerability
+            Sub-technique: Exploiting Public-Facing Application (T1190)
+            Sub-technique: Exploiting Known Vulnerability (T1210)
+
+    Deploying backdoors on ESXi hosts using an alternative socket address family, VMCI, for lateral movement and continued persistence. This address family enabled direct reconnection from any guest VM to the compromised ESXi host’s backdoor regardless of network segmentation or firewall rules in place:
+        Technique: Lateral Movement
+            Sub-technique: Remote Services: SMB/Windows Admin Shares (T1021.001)
+            Sub-technique: Remote Services: Virtualization/Sandbox Evasion (T1021.003)
+
+    Continuing to tamper with and disable logging services on impacted systems, presenting additional challenges to investigating UNC3886 in a compromised environment:
+        Technique: Defense Evasion
+            Sub-technique: Disabling Security Tools (T1562.001)
+            Sub-technique: Indicator Removal on Host (T1070.004)
+    
 	· Microsoft June 2023 Patch Tuesday fixes 78 flaws, 38 RCE bugs 
 			o https://www.bleepingcomputer.com/news/microsoft/microsoft-june-2023-patch-tuesday-fixes-78-flaws-38-rce-bugs/ 
+			this article is a list of patchs from microsoft. 
 	· Two XSS Vulnerabilities in Azure with Embedded postMessage IFrames
 			o https://orca.security/resources/blog/examining-two-xss-vulnerabilities-in-azure-services/
+			
+			We found two dangerous vulnerabilities in Azure Bastion and Azure Container Registry, that allowed an attacker to achieve Cross-Site Scripting (XSS) by using iframe-postMessages
+			Microsoft was able to reproduce the issues and has since fixed both vulnerabilities in the Azure infrastructure
  
 (U) #StopRansmware:
 	· No reporting identified
@@ -64,3 +140,5 @@ Deobfuscate/Decode Files or Information
 (U) Breaches:
 	· BreachForums Returns Under the Control of ShinyHunters Hackers
 			· https://www.hackread.com/breachforums-returns-with-shinyhunters-hackers/
+			
+			this is about the cyber crime forum known as breachforums. 
