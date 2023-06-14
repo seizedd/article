@@ -6,6 +6,41 @@ This article provides details on possible threat actor behind VMWare hypervisor 
 (U) Tactics/Techniques/Procedures:
 	· Behind the Scenes: Unveiling the Hidden Workings of Earth Preta
 			o https://www.trendmicro.com/en_us/research/23/f/behind-the-scenes-unveiling-the-hidden-workings-of-earth-preta.html
+			Resource Development
+T1583.004
+Initial Access
+Execution
+T1587.001
+T1585.002
+T1588.002
+T1608.001
+T1566.002
+T1204.001
+T1204.002
+T1059.001
+T1547.001
+Persistence
+Defense Evasion
+T1574.002
+T1053.005
+T1140
+Name
+Acquire Infrastructure: Server
+Develop Capabilities: Malware
+Establish Accounts: Email Accounts
+Obtain Capabilities: Tool
+Stage Capabilities: Upload Malware
+Phishing: Spearphishing Link
+User Execution: Malicious Link
+User Execution: Malicious File
+Command and Scripting Interpreter: PowerShell
+Boot or Logon Autostart Execution: Registry Run
+Keys / Startup Folder
+Hijack Execution Flow: DLL Side-Loading
+Scheduled Task/Job: Scheduled Task
+Deobfuscate/Decode Files or Information
+			
+			
 	· Hackers can steal cryptographic keys by video-recording power LEDs 60 feet away
 			o https://arstechnica.com/information-technology/2023/06/hackers-can-steal-cryptographic-keys-by-video-recording-connected-power-leds-60-feet-away/
 	· Massive phishing campaign uses 6,000 sites to impersonate 100 brands
