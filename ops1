@@ -1,26 +1,241 @@
 •	DOJ establishes cybercrime enforcement unit as U.S. warnings mount over Chinese hacking
 o	https://cyberscoop.com/doj-establishes-cybercrime-enforcement-unit-natseccyber/
+this is a non techincal article that covers the Department of Justice which has established a new cyber-focused section called the National Security Cyber Section (NatSec Cyber) within its National Security Division. This move aims to combat various digital crimes and elevate cyber threats to the same level as other major national security issues such as counterterrorism and counterintelligence. The establishment of this section enables the DOJ to increase the scale and speed of disruption campaigns and prosecutions related to nation-state cyber threats, state-sponsored cybercriminals, money launderers, and other cyber-enabled threats to national security.
 
 (U) Threat Groups:
 •	APT28 group used three Roundcube exploits (CVE-2020-35730, CVE-2021-44026, CVE-2020-12641) during another espionage campaign
 o	https://cert.gov.ua/article/4905829
+The article reports on a recent espionage campaign conducted by the APT28 group, which utilized three exploits targeting Roundcube, a popular email software. The exploits used were CVE-2020-35730, CVE-2021-44026, and CVE-2020-12641. The campaign involved establishing network connections between the Ukrainian government's information and communication system and infrastructure associated with APT28. During the analysis, no evidence of malware infection was found on the computer, however further examination of the user's mailbox revealed an email which contained a malicious article and included an exploit for the Roundcube vulnerability CVE-2020-35730, along with JavaScript code designed to download and execute additional JavaScript files.
+Tactic: Initial Access
+Technique: Spear-phishing Attachment
+Tactic: Execution
+Technique: Exploitation of Vulnerability
+Tactic: Command and Control
+Technique: Remote File Copy
+Tactic: Collection
+Technique: Data from Local System
 
 (U) Tactics/Techniques/Procedures:
 •	Chinese APT15 hackers resurface with new Graphican malware
 •	https://www.bleepingcomputer.com/news/security/chinese-apt15-hackers-resurface-with-new-graphican-malware/
+The article discusses the activities of the Chinese state-sponsored hacking group known as APT15, which has been targeting public and private organizations worldwide since 2004. The group has recently been observed using a new backdoor called 'Graphican' in a campaign targeting foreign affairs ministries in Central and South American countries.Graphican is an evolution of a previous malware used by APT15 and utilizes the Microsoft Graph API and OneDrive to obtain its command and control infrastructure addresses in an encrypted form, making it resistant to takedowns. 
+    Disabling Internet Explorer 10's first-run wizard and welcome page using registry keys.
+        MITRE ATT&CK Technique: T1112 - Modify Registry (https://attack.mitre.org/techniques/T1112/)
+
+    Verifying if the 'iexplore.exe' process is active.
+        MITRE ATT&CK Technique: T1057 - Process Discovery (https://attack.mitre.org/techniques/T1057/)
+
+    Authenticating with Microsoft Graph API for a valid access token and refresh_token.
+        MITRE ATT&CK Technique: T1556.001 - Inter-Process Communication: Microsoft Windows APIs (https://attack.mitre.org/techniques/T1556/001/)
+
+    Enumerating child files and folders in the "Person" OneDrive folder using the Graph API.
+        MITRE ATT&CK Technique: T1083 - File and Directory Discovery (https://attack.mitre.org/techniques/T1083/)
+
+    Decrypting the first folder's name for use as a C&C server.
+        This specific action does not have a direct match in the MITRE ATT&CK framework.
+
+    Generating a unique Bot ID using the hostname, local IP, Windows version, default language identifier, and process bitness (32/64-bit).
+        This specific action does not have a direct match in the MITRE ATT&CK framework.
+
+    Registering the bot with the C&C server using a specific format string filled with the collected victim's computer data.
+        MITRE ATT&CK Technique: T1102 - Web Service (https://attack.mitre.org/techniques/T1102/)
+
+    Regularly checking the C&C server for new commands to execute.
+        MITRE ATT&CK Technique: T1505 - Server Software Component (https://attack.mitre.org/techniques/T1505/)
+
+    Create an interactive command line that is controlled from the C&C server.
+        MITRE ATT&CK Technique: T1059.001 - Command and Scripting Interpreter: PowerShell (https://attack.mitre.org/techniques/T1059/001/)
+
+    Create a file on the remote computer.
+        MITRE ATT&CK Technique: T1105 - Ingress Tool Transfer (https://attack.mitre.org/techniques/T1105/)
+
+    Download a file from the remote computer to the C&C server.
+        MITRE ATT&CK Technique: T1105 - Ingress Tool Transfer (https://attack.mitre.org/techniques/T1105/)
+
+    Create a new process with a hidden window.
+        MITRE ATT&CK Technique: T1055 - Process Injection (https://attack.mitre.org/techniques/T1055/)
+
+    Create a new PowerShell process with a hidden window and save the results in a temporary file in the TEMP folder, and send the results to the C&C server.
+        MITRE ATT&CK Technique: T1059.001 - Command and Scripting Interpreter: PowerShell (https://attack.mitre.org/techniques/T1059/001/)
+
+    Custom APT15 backdoor extracting emails from infected Microsoft Exchange servers.
+        MITRE ATT&CK Technique: T1110 - Brute Force (https://attack.mitre.org/techniques/T1110/)
+
+    Publicly available credential-dumping tools that exploit Windows single sign-on to extract secrets from memory.
+        MITRE ATT&CK Technique: T1003 - OS Credential Dumping (https://attack.mitre.org/techniques/T1003/)
+
+    An open-source tool able to retrieve passwords from multiple applications.
+        MITRE ATT&CK Technique: T1552.001 - Credentials from Password Stores: Credentials from Web Browsers (https://attack.mitre.org/techniques/T1552/001/)
+
+    Dumps different types of Windows credentials. Documented since 2013.
+        MITRE ATT&CK Technique: T1003 - OS Credential Dumping (https://attack.mitre.org/techniques/T1003/)
+
+    A .Net port of Impacket's secretsdump.py, used for dumping remote SAM and LSA secrets.
+        MITRE ATT&CK Technique: T1003 - OS Credential Dumping (https://attack.mitre.org/techniques/T1003/)
+
+    A toolset featuring privilege escalation, password cracking, scanning, vulnerability utilization, and various system exploits.
+        This specific action refers to multiple techniques within the MITRE ATT&CK framework, such as T1078 - Valid Accounts (https://attack.mitre.org/techniques/T1078/) and T1110 - Brute Force (https://attack.mitre.org/techniques/T1110/).
+
+    Vulnerable systems identification.
+        This specific action does not have a direct match in the MITRE ATT&CK framework.
+
+    Web shells - AntSword, Behinder, China Chopper, Godzilla, giving the hackers backdoor access to the breached systems.
+        MITRE ATT&CK Technique: T1505 - Server Software Component (https://attack.mitre.org/techniques/T1505/)
+
+    CVE-2020-1472 exploit - Elevation of privilege vulnerability affecting the Netlogon Remote Protocol.
+        MITRE ATT&CK Technique: T1214 - Credentials in Files (https://attack.mitre.org/techniques/T1214/)
 
 (U) Malware:
+
 •	Buhti: New Ransomware Operation Relies on Repurposed Payloads
 o	https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/buhti-ransomware
+Buhti is a relatively new ransomware operation that utilizes rebranded variants of the leaked LockBit and Babuk ransomware payloads to target Windows and Linux systems. Although Buhti doesn't develop its own ransomware, it uses a custom-developed information stealer tool to search for and archive specific file types. The group initially targeted Linux computers but has also been observed attempting to attack Windows computers. Buhti exploits recently disclosed vulnerabilities, such as the PaperCut vulnerability, to gain unauthorized access. The ransomware payload used by Buhti is a modified version of LockBit 3.0, and the Linux payloads are variants of the leaked Babuk ransomware. While the group relies on repurposed payloads, it appears to have its own custom exfiltration tool for stealing files. Buhti, operating under the name Blacktail, demonstrates competence and adaptability, making it a dangerous adversary despite not developing its own ransomware.
+Initial Access 	  	 
+Technique Title 	ID 	Use
+Valid Accounts 	T1078
+LockBit 3.0 actors obtain and abuse credentials of existing accounts as a means of gaining initial access.
+Exploit External Remote Services 	T1133
+LockBit 3.0 actors exploit RDP to gain access to victim networks.
+Drive-by Compromise 	T1189
+LockBit 3.0 actors gain access to a system through a user visiting a website over the normal course of browsing.
+Exploit Public-Facing Application 	T1190
+LockBit 3.0 actors exploit vulnerabilities in internet-facing systems to gain access to victims’ systems.
+Phishing 	T1566
+LockBit 3.0 actors use phishing and spearphishing to gain access to victims' networks.
+Execution 	  	 
+Technique Title 	ID 	Use
+Execution 	TA0002
+LockBit 3.0 launches commands during its execution.
+Software Deployment Tools 	T1072
+LockBit 3.0 uses Chocolatey, a command- line package manager for Windows.
+Persistence 	  	 
+Technique Title 	ID 	Use
+Valid Accounts 	T1078
+LockBit 3.0 uses a compromised user account to maintain persistence on the target network.
+Boot or Logo Autostart Execution 	T1547
+LockBit 3.0 enables automatic logon for persistence.
+Privilege Escalation 	  	 
+Technique Title 	ID 	Use
+Privilege Escalation 	TA0004
+Lockbit 3.0 will attempt to escalate to the required privileges if current account privileges are insufficient.
+Boot or Logo Autostart Execution 	T1547
+LockBit 3.0 enables automatic logon for privilege escalation.
+Defense Evasion 	  	 
+Technique Title 	ID 	Use
+Obfuscated Files or Information 	T1027
+LockBit 3.0 will send encrypted host and bot information to its C2 servers.
+Indicator Removal: File Deletion 	T1070.004
+LockBit 3.0 will delete itself from the disk.
+Execution Guardrails: Environmental Keying 	T1480.001
+LockBit 3.0 will only decrypt the main component or continue to decrypt and/or decompress data if the correct password is entered.
+Credential Access 	  	 
+Technique Title 	ID 	Use
+OS Credential Dumping: LSASS Memory 	T1003.001
+LockBit 3.0 uses Microsoft Sysinternals ProDump to dump the contents of LSASS.exe.
+Discovery 	  	 
+Technique Title 	ID 	Use
+Network Service Discovery 	T1046
+LockBit 3.0 uses SoftPerfect Network Scanner to scan target networks.
+System Information Discovery 	T1082
+LockBit 3.0 will enumerate system information to include hostname, host configuration, domain information, local drive configuration, remote shares, and mounted external storage devices.
+System Location   Discovery: System Language Discovery 	T1614.001
+LockBit 3.0 will not infect machines with language settings that match a defined exclusion list.
+Lateral Movement 	  	 
+Technique Title 	ID 	Use
+Remote Services:   Remote Desktop Protocol 	T1021.001
+LockBit 3.0 uses Splashtop remote- desktop software to facilitate lateral movement.
+Command and Control 	  	 
+Technique Title 	ID 	Use
+Application Layer Protocol: File Transfer Protocols 	T1071.002
+LockBit 3.0 uses FileZilla for C2.
+Protocol Tunnel 	T1572
+LockBit 3.0 uses Plink to automate SSH actions on Windows.
+Exfiltration 	  	 
+Technique Title 	ID 	Use
+Exfiltration 	TA0010
+LockBit 3.0 uses Stealbit, a custom exfiltration tool first used with LockBit 2.0, to steal data from a target network.
+Exfiltration Over Web Service 	T1567
+LockBit 3.0 uses publicly available file sharing services to exfiltrate a target’s data.
+Exfiltration Over Web Service: Exfiltration to Cloud Storage 	T1567.002
+LockBit 3.0 actors use (1) rclone, an open source command line cloud storage manager to exfiltrate and (2) MEGA, a publicly available file sharing service for data exfiltration.
+Impact 	  	 
+Technique Title 	ID 	Use
+Data Destruction 	T1485
+LockBit 3.0 deletes log files and empties the recycle bin.
+Data Encrypted for Impact 	T1486
+LockBit 3.0 encrypts data on target systems to interrupt availability to system and network resources.
+Service Stop 	T1489
+LockBit 3.0 terminates processes and services.
+Inhibit System Recovery 	T1490
+LockBit 3.0 deletes volume shadow copies residing on disk.
+Defacement: Internal Defacement 	T1491.001
+LockBit 3.0 changes the host system’s wallpaper and icons to the LockBit 3.0 wallpaper and icons, respectively.
+
+
+
 •	Dissecting TriangleDB, a Triangulation spyware implant
 o	https://securelist.com/triangledb-triangulation-implant/110050/
+The article discusses the Operation Triangulation, a research effort to retrieve various parts of the exploitation chain used in targeted spyware infections on iOS devices. The researchers were able to analyze the spyware implant called TriangleDB, which is deployed after the attackers gain root privileges on the device by exploiting a kernel vulnerability. TriangleDB communicates with command-and-control (C2) servers using the Protobuf library and exchanges encrypted messages via HTTPS. 
+    Exploiting kernel vulnerability to gain root privileges on iOS devices: Exploit Public-Facing Application (T1190)
+    Deploying the TriangleDB implant in memory on the infected device: In-Memory Accessibility (T1003)
+    Communicating with command-and-control (C2) servers using the Protobuf library: Commonly Used Port (T1043)
+    Using symmetric (3DES) and asymmetric (RSA) cryptography to encrypt sent and received messages: Data Encryption (T1022)
+    Exchanging messages via HTTPS protocol in POST requests: Standard Application Layer Protocol (T1071)
+    Periodically sending heartbeat beacons containing system information to the C2 server: Heartbeat (T1497)
+    Receiving commands from the C2 server in Protobuf message format: Remote File Copy (T1105)
+    Interacting with the filesystem, including file creation, modification, exfiltration, and removal: File and Directory Operations (T1106)
+    Interacting with processes, including listing and terminating them: Process Discovery (T1057), Process Termination (T1126)
+    Dumping the victim's keychain items to harvest credentials: Credential Dumping (T1003)
+    Monitoring the victim's geolocation: Location Tracking (T1440)
+    Running additional modules, which are Mach-O executables loaded by the implant: Command-Line Interface (T1059)
+    Using the CRXPollRecords command to monitor changes in folders and upload modified files matching specified regular expressions to the C2 server: File and Directory Discovery (T1083)
+
 •	Hackers infect Linux SSH servers with Tsunami botnet malware
 o	https://www.bleepingcomputer.com/news/security/hackers-infect-linux-ssh-servers-with-tsunami-botnet-malware/
+The article reports on a campaign where unknown threat actors are targeting Linux SSH servers to install various types of malware. The malware includes the Tsunami DDoS bot, ShellBot, log cleaners, privilege escalation tools, and an XMRig coin miner for mining Monero cryptocurrency.
+
+The attackers scan the internet for publicly-exposed Linux SSH servers and then use brute-force attacks to gain unauthorized access by trying numerous username-password combinations. Once they gain access as an admin user, they execute a command to fetch and execute a collection of malware through a Bash script.
+
+The malware downloaded onto compromised servers consists of DDoS botnets, log cleaners, cryptocurrency miners, and privilege escalation tools. Tsunami and ShellBot are the specific DDoS botnet malware used in these attacks. Tsunami, also known as "Ziggy," persists between reboots and supports various remote control commands.
+
+The attackers also employ log cleaners to wipe evidence of intrusion, privilege escalation tools to elevate their privileges, and an XMRig coin miner to exploit the server's resources for mining Monero.
+
+    Brute-forcing: Technique - T1110: Brute Force
+    Command Execution: Technique - T1059: Command and Scripting Interpreter
+    Malware Deployment: Technique - T1204: User Execution
+    Persistence: Technique - T1543: Create or Modify System Process
+    IRC Protocol: Technique - T1071: Standard Application Layer Protocol
+    Port Scanning and Flood Attacks: Technique - T1498: Network Denial of Service
+    Remote Control Commands: Technique - T1021: Remote Services
+    Log Cleaners: Technique - T1070: Indicator Removal on Host
+    Privilege Escalation: Technique - T1548: Abuse Elevation Control Mechanism
+    Cryptocurrency Mining: Technique - T1496: Resource Hijacking
+    Defense Measures: Techniques - T1552: Use of Encrypted Channel and T1573: Encrypted Channel: Asymmetric Cryptography
+
 •	Experts Uncover Year-Long Cyber Attack on IT Firm Utilizing Custom Malware RDStealer
 o	https://thehackernews.com/2023/06/experts-uncover-year-long-cyber-attack.html
+this article discusses A year-long cyber attack on an East Asian IT company, dubbed RedClouds, involved the use of a custom malware called RDStealer. The attackers initially used readily available tools before transitioning to bespoke malware to evade detection. They stored backdoor payloads in Windows folders resembling legitimate applications, and the malware specialized in gathering clipboard content and keystroke data. It also monitored and compromised remote machines through Remote Desktop Protocol (RDP) connections. Another custom malware, Logutil, facilitated persistence on the victim network. The sophisticated attack demonstrates the evolving tactics of cybercriminals and their ability to exploit widely adopted technologies.
+
+Remote Desktop Protocol (RDP) Exploitation: This TTP corresponds to MITRE ATT&CK Technique T1076 - Remote Desktop Protocol, which involves the unauthorized use of RDP to gain access to a system.
+Persistence and Command Execution: The use of custom malware (RDStealer and Logutil) to maintain persistence and execute commands aligns with various MITRE ATT&CK techniques, such as T1028 - Windows Remote Management and T1035 - Service Execution.
+Credential Compromise: This TTP corresponds to MITRE ATT&CK Technique T1110 - Brute Force, which involves attempting to gain unauthorized access by systematically trying various credentials.
 
 (U) Vulnerabilities/Exploits:
 •	Alert! Hackers Exploiting Critical Vulnerability in VMware's Aria Operations Networks - CVE-2023-20887
 o	https://thehackernews.com/2023/06/alert-hackers-exploiting-critical.html
+The article highlights that a critical command injection vulnerability in VMware's Aria Operations for Networks (formerly vRealize Network Insight) is being actively exploited in the wild. Tracked as CVE-2023-20887, the flaw allows malicious actors with network access to execute remote code by performing a command injection attack. The vulnerability affects VMware Aria Operations Networks versions 6.x, and fixes were released in various versions on June 7, 2023. The company has confirmed the exploitation of the vulnerability, although specific details about the attacks are not yet known. Users are advised to update to the latest version of Aria Operations for Networks to mitigate the risks associated with the vulnerability.
+
 •	nOAuth: How Microsoft OAuth Misconfiguration Can Lead to Full Account Takeover
 o	https://www.descope.com/blog/post/noauth
+
+The blog post discusses a security flaw called "nOAuth" that was discovered by the Descope security team in Microsoft Azure AD OAuth applications. The flaw allows for full account takeover in multi-tenant environments. The issue arises from using the mutable and unverified "email" claim as a user identifier, which can be manipulated by an attacker by changing the Email attribute in the Azure AD account.
+
+The blog post highlights that Microsoft had previous documentation advising against using the email address as a unique identifier but has since refactored their documentation and introduced new claims to mitigate the nOAuth issue. These new claims allow apps to verify domain-verified email addresses and redact email claims for unverified domains.
+
+Descope informed vulnerable applications, including a design app, a customer experience company, and a multi-cloud consulting provider, about the issue and helped them address the vulnerability. They also informed authentication providers that were merging user accounts without validation, which could result in full account takeover.
+
+The blog post provides suggested remediation steps for developers to address the nOAuth issue and recommends using the "sub" claim as the unique identifier. It also encourages app developers to regularly review their authentication implementations for security vulnerabilities.
+
+Descope disclosed the nOAuth configuration issue to Microsoft, who issued guidance to customers and worked on deploying fixes. The disclosure timeline and steps taken by Descope and Microsoft are outlined in the blog post.
+
+Overall, the blog post aims to raise awareness about the nOAuth issue and provide guidance for developers to address the vulnerability in their applications.
