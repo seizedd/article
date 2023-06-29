@@ -50,34 +50,136 @@ The article discusses a ongoing campnaign that has discovered targeting the npm 
 
 •	Fileless attacks surge as cybercriminals evade cloud security defenses 
 o	https://www.csoonline.com/article/643356/fileless-attacks-surge-as-cybercriminals-evade-cloud-security-defenses.html
+The article discusses the rise in fileless or memory-based attacks over the past year. From an overview, it briefly highlights the stats of the techniques used by threat actors to conceal their campaigns, such as masquerading techniques, obfuscated files, and memory resident malware. 
+    Defense Evasion (Tactic):
+        Masquerading (Sub-technique)
+        Obfuscated Files or Information (Sub-technique)
+        Memory Resident Malware (Sub-technique)
+
+    Initial Access (Tactic):
+        Exploit Public-Facing Application (Sub-technique)
+
+    Persistence (Tactic):
+        Package Planting (Sub-technique)
+
+    Discovery (Tactic):
+        Software Discovery (Sub-technique)
+        Exploit Public-Facing Application (Sub-technique)
+
+    Collection (Tactic):
+        Collection of Information (Sub-technique)
+
+    Command and Control (Tactic):
+        Commonly Used Port (Sub-technique)
+
 •	Detecting popular Cobalt Strike Malleable C2 profile techniques
 o	https://unit42.paloaltonetworks.com/cobalt-strike-malleable-c2/
+The article discusses the findings of Unit 42 researchers regarding the detection of Cobalt Strike malleable C2 profile techniques. They identified two Cobalt Strike Team Server instances on the internet that hosted Beacon implants and enabled C2 functionality. the two tatics that teh article mentioned were:
+
+Brand New Profile: Modification of Malleable C2 Profile: Attackers modify the Malleable C2 profile to create a custom and unique profile that can bypass security filters. The article provides a specific example of modifications made to the GET and POST transactions, including encrypted and encoded data placement, custom header additions, and double encoding techniques.
+
+Case 2: Hiding Behind Known Good Services:
+
+    Forging Host Headers: Attackers manipulate the host headers in HTTP requests to mimic traffic from benign services. By using well-known domain names in the host header, they attempt to evade network security inspection.
+
+    Utilizing Public Cloud Services: Threat actors leverage public cloud platforms as their Command-and-Control (C2) servers. By utilizing the infrastructure of reputable cloud providers, they aim to avoid detection by IP reputation services and URL filtering products.
+
+general TTPs related to C2: 
+    Command and Control (C2) Communication (T1071):
+        Sub-technique: Standard Application Layer Protocol (T1071.001)
+        Sub-technique: Custom Command and Control Protocol (T1071.004)
+
+    Remote File Copy (T1105):
+        Sub-technique: Ingress Tool Transfer (T1105.002)
+
+    User Execution (T1204):
+        Sub-technique: Malicious File (T1204.002)
+        Sub-technique: Scripting (T1204.004)
+
+    Network Service Scanning (T1046):
+        Sub-technique: Port Scanning (T1046.001)
+
+    Data Encoding (T1132):
+        Sub-technique: Standard Encoding (T1132.001)
+        Sub-technique: Non-Standard Encoding (T1132.002)
+
+    Obfuscated Files or Information (T1027):
+        Sub-technique: Software Packing (T1027.001)
+        Sub-technique: Obfuscated Files or Information (T1027.003)
+
+
+
 •	Muddled Libra targets BPO sector with advanced social engineering
 o	https://www.cysecurity.news/2023/06/muddled-libra-targets-bpo-sector-with.html
+The article provides an overview of the tactics, IOCs, and novel techniques employed by the threat actor known as Muddled Libra in targeting the business process outsourcing (BPO) industry. Muddled Libra utilizes advanced social engineering tactics and the 0ktapus framework to launch persistent attacks against BPO systems. They employ smishing attacks, credential phishing, SIM swapping, and the 0ktapus phishing kit to gain initial access and establish long-term persistence.
+    Social Engineering (Tactic: Initial Access): Muddled Libra employs advanced social engineering tactics to trick individuals and gain unauthorized entry into BPO systems.
+
+    Phishing (Tactic: Initial Access): The threat actor utilizes smishing attacks and the 0ktapus phishing kit to target organizations and deceive individuals into providing sensitive information.
+
+    SIM Swapping (Tactic: Initial Access): Muddled Libra utilizes SIM swapping techniques as part of their attack strategy to gain unauthorized access to telecom and BPO companies.
+
+    Data Theft (Tactic: Exfiltration): Once inside the target network, the threat actor engages in data theft, extracting sensitive information from compromised systems.
+
+    Persistence (Tactic: Persistence): Muddled Libra establishes long-term persistence within the compromised environments, allowing them to maintain continuous access and carry out subsequent attacks.
+
+    Evasion (Tactic: Defense Evasion): The threat actor manipulates endpoint security solutions to avoid detection and evade security measures.
 
 (U) Malware:
 •	Andariel’s silly mistakes and a new malware family
 o	https://securelist.com/lazarus-andariel-mistakes-and-easyrat/110119/ 
+The article highlights the activities of the Lazarus group's subunit, Andariel, and their recent campaign involving new malware families. Andariel exploits the Log4j vulnerability to initiate infections and download further malware from the command-and-control (C2) server. Interestingly, the operators behind Andariel demonstrate inexperience through numerous mistakes and typos in their commands. They use off-the-shelf tools like Supremo remote desktop, Putty, and NTDSDumpEx for exploitation. The article also introduces a previously undocumented malware family called EarlyRat
+
+
 •	New fast-developing infostealer pries open system information
 o	https://www.fortinet.com/blog/threat-research/new-fast-developing-thirdeye-infostealer-pries-open-system-information?&web_view=true
+The article discusses a newly discovered infostealer called "ThirdEye" and provides an overview of its behavior and evolution. ThirdEye is a relatively simple malware designed to gather system information from compromised machines, including BIOS data, file lists, running processes, and network information. The collected data is then sent to a command-and-control server.
+
+
 •	Unveiling Wagner Group’s cyber-recruitment
 o	https://blog.cyble.com/2023/06/27/unveiling-wagner-groups-cyber-recruitment/ 
+The article discusses the discovery of a new ransomware variant called Wagner, which is a variant of the Chaos ransomware. Unlike typical ransomware that demands money, the Wagner ransomware urges users to join the PMC Wagner, a Russian paramilitary organization. The ransomware targets victims primarily within Russia and encrypts various file types, appending the ".Wagner" extension to the encrypted files. The ransomware also attempts to achieve persistence and privilege escalation by creating copies of itself and adding them to startup folders. The Wagner Group has not officially claimed responsibility for this ransomware strain.
+Tactic   	Technique ID   	Technique Name   
+Execution    	T1204   	User Execution   
+Persistence	T1547    	Registry Run Keys / Startup Folder  
+ 
+Discovery   	T1082 
+T1083
+T1057  	System Information Discovery 
+File and Directory Discovery   
+Process Discovery 
+Impact  	T1486  
+T1490	Data Encrypted for Impact  
+Inhibit System Recovery
+
 
 (U) Vulnerabilities/Exploits:
 •	Nessus plugin flaw let attackers escalate the privileges
 o	https://cybersecuritynews.com/nessus-plugin-flaw/ 
+A vulnerability in a plugin used by the popular vulnerability scanning tool Nessus has been discovered, allowing attackers to escalate privileges. The flaw, identified as CVE-2023-2005, enables threat actors to place a binary on the filesystem in a specific location and exploit the plugin to gain elevated privileges. Tenable has released security patches to address the issue. This exploitation has a low success rate, however patches are still recommeneded. 
+
+
 •	Multiple vulnerabilities in Google Chrome could allow for Arbitrary Code Execution
 o	https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-google-chrome-could-allow-for-arbitrary-code-execution_2023-070
+This advisory states that multiple vulnerabilities have been discovered in Google Chrome that could potentially allow for arbitrary code execution. These vulnerabilities include     
+    Type Confusion in V8 (CVE-2023-3420)
+    Use after free in Media (CVE-2023-3421)
+    Use after free in Guest View (CVE-2023-3422) If successfully exploited, an attacker could execute arbitrary code, install programs, manipulate data, or create new accounts with full user rights. While there are currently no reports of these vulnerabilities being exploited in the wild.
+Tactic: Initial Access (TA0001):
+Technique: Drive-By Compromise (T1189):
+
 
 (U) #StopRansmware:
 •	Akira ransomware extends reach to Linux platform
 o	https://blog.cyble.com/2023/06/28/akira-ransomware-extends-reach-to-linux-platform/
+The newly identified ransomware group known as "Akira" has expanded its operations to target the Linux platform. Akira ransomware has already compromised 46 publicly disclosed victims, primarily located in the United States. The ransomware targets various sectors, including Education, Banking, Financial Services and Insurance (BFSI), Manufacturing, and Professional Services. The Linux variant of Akira ransomware is a 64-bit Linux Executable and Linkable Format (ELF) file. It utilizes specific parameters for execution, encrypts files using symmetric key algorithms (such as AES and DES), and adds the ".akira" extension to compromised files. The ransomware deposits a predefined ransom note onto the victim's system. 
+Execution 	
+T1204 	User Execution
 
-(U) Breaches:
-•	No reporting identified 
+Discovery   	
+T1082 System Information Discovery
+T1083	File and Directory Discovery
 
-(U) FYSA:
-•	Experts found hundreds of devices within federal networks having internet-exposed management interfaces
-o	https://securityaffairs.com/147876/hacking/fceb-internet-exposed-management-interfaces.html
-•	Microsoft Teams outage blocks access to web and desktop clients
-o	https://www.bleepingcomputer.com/news/microsoft/microsoft-teams-outage-blocks-access-to-web-and-desktop-clients/
+Impact  	
+T1486 Data Encrypted for Impact 
+T1490 Inhibit System Recovery
+
