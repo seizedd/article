@@ -1,0 +1,53 @@
+(U//FOUO) TLP:AMBER+STRICT Crowdstrike Threat Reporting: 
+•	(U//FOUO) TLP:AMBER+STRICT CSIT-23177-Technical Overview of OCEAN BUFFALO KamiKakaBot InstallationChain
+o	(U//FOUO) TLP:AMBER+STRICT https://falcon.laggar.gcw.crowdstrike.com/api2/intel/reports/entities/report-files/v1?ids=212236
+•	(U//FOUO) TLP:AMBER+STRICT CSIT-23182-Technical Analysis of Rhadamanthys Loader -A Series of -Evasive Shellcode Stages Leads to a Steganography Downloader
+o	(U//FOUO) TLP:AMBER+STRICT https://falcon.laggar.gcw.crowdstrike.com/api2/intel/reports/entities/report-files/v1?ids=212227
+ 
+==================================
+ 
+(U) USCIS, DHS, other DHS Components, Adjacent Agencies(DoJ, DoS, etc.):
+•	No reporting identified
+
+(U) Threat Groups:
+•	Who is 8BASE? A deep dive into the “newish” ransom gang
+o	https://cybernews.com/security/8base-new-ransomware-group-explained/
+
+(U) Tactics/Techniques/Procedures:
+•	Process Mockingjay: Echoing RWX In Userland To Achieve Code Execution
+o	https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution
+•	New ongoing campaign targets npm ecosystem with unique execution chain
+o	https://thehackernews.com/2023/06/new-ongoing-campaign-targets-npm.html
+•	Fileless attacks surge as cybercriminals evade cloud security defenses 
+o	https://www.csoonline.com/article/643356/fileless-attacks-surge-as-cybercriminals-evade-cloud-security-defenses.html
+•	Detecting popular Cobalt Strike Malleable C2 profile techniques
+o	https://unit42.paloaltonetworks.com/cobalt-strike-malleable-c2/
+•	Muddled Libra targets BPO sector with advanced social engineering
+o	https://www.cysecurity.news/2023/06/muddled-libra-targets-bpo-sector-with.html
+
+(U) Malware:
+•	Andariel’s silly mistakes and a new malware family
+o	https://securelist.com/lazarus-andariel-mistakes-and-easyrat/110119/ 
+•	New fast-developing infostealer pries open system information
+o	https://www.fortinet.com/blog/threat-research/new-fast-developing-thirdeye-infostealer-pries-open-system-information?&web_view=true
+•	Unveiling Wagner Group’s cyber-recruitment
+o	https://blog.cyble.com/2023/06/27/unveiling-wagner-groups-cyber-recruitment/ 
+
+(U) Vulnerabilities/Exploits:
+•	Nessus plugin flaw let attackers escalate the privileges
+o	https://cybersecuritynews.com/nessus-plugin-flaw/ 
+•	Multiple vulnerabilities in Google Chrome could allow for Arbitrary Code Execution
+o	https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-google-chrome-could-allow-for-arbitrary-code-execution_2023-070
+
+(U) #StopRansmware:
+•	Akira ransomware extends reach to Linux platform
+o	https://blog.cyble.com/2023/06/28/akira-ransomware-extends-reach-to-linux-platform/
+
+(U) Breaches:
+•	No reporting identified 
+
+(U) FYSA:
+•	Experts found hundreds of devices within federal networks having internet-exposed management interfaces
+o	https://securityaffairs.com/147876/hacking/fceb-internet-exposed-management-interfaces.html
+•	Microsoft Teams outage blocks access to web and desktop clients
+o	https://www.bleepingcomputer.com/news/microsoft/microsoft-teams-outage-blocks-access-to-web-and-desktop-clients/
