@@ -12,12 +12,42 @@ o	(U//FOUO) TLP:AMBER+STRICT https://falcon.laggar.gcw.crowdstrike.com/api2/inte
 (U) Threat Groups:
 •	Who is 8BASE? A deep dive into the “newish” ransom gang
 o	https://cybernews.com/security/8base-new-ransomware-group-explained/
+The article provides an overview of a ransomware group called 8BASE, which has gained attention for its high victim count and contribution to the rise in worldwide ransomware attacks. While the article does not specifically list TTPs (Tactics, Techniques, and Procedures) or IOCs (Indicators of Compromise), it mentions that 8BASE uses a double extortion method, targets smaller businesses, and shows similarities to another group called RansomHouse.
+
 
 (U) Tactics/Techniques/Procedures:
 •	Process Mockingjay: Echoing RWX In Userland To Achieve Code Execution
 o	https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution
+The article discusses a new process injection technique called "Mockingjay" developed by a research team. Process injection is a method used by attackers to insert and execute code within the memory space of a process. The technique involves leveraging vulnerable DLLs and copying code to the appropriate section to inject and execute code without relying on monitored Windows APIs. The Mockingjay technique eliminates the need for memory allocation, permission setting, or starting a thread in the targeted process. By utilizing existing RWX (Read-Write-Execute) sections in DLLs, the technique aims to bypass detection by security software like EDRs (Endpoint Detection and Response). Additionally, it describes the process of finding a vulnerable DLL and the injection mechanisms employed by the Mockingjay technique.
+    Mockingjay Technique (New Technique Developed):
+        Tactic: Defense Evasion
+        Sub-technique: Code Injection (T1055)
+        Description: The article introduces a new process injection technique called "Mockingjay" that involves leveraging a vulnerable DLL with default RWX sections to inject code into Windows processes. It aims to bypass security controls, such as EDRs, by avoiding the use of monitored Windows APIs typically associated with process injection techniques.
+
+    Classic DLL Injection:
+        Tactic: Defense Evasion
+        Sub-technique: Dynamic-link Library Injection (T1055.001)
+        Description: The article mentions the classic DLL injection technique, where a malicious DLL is injected into the memory space of another process by allocating memory, writing the DLL into that memory, and creating a thread to start its execution.
+
+    PE Injection:
+        Tactic: Defense Evasion
+        Sub-technique: Process Hollowing (T1055.012)
+        Description: The article refers to PE injection as a technique where an entire Portable Executable (PE) file is mapped into the memory space of a running process. It involves allocating a new memory section within the target process, mapping the payload onto this section, and creating a remote thread for execution.
+
+    Thread Execution Hijacking:
+        Tactic: Defense Evasion
+        Sub-technique: Thread Execution Hijacking (T1055.014)
+        Description: The article mentions thread execution hijacking as a technique used to gain control of the execution flow within a process by redirecting the execution of a target thread to arbitrary code. It allows manipulation of the process's behavior without creating a new process or modifying the underlying code.
+
+    Mapping Injection:
+        Tactic: Defense Evasion
+        Sub-technique: DLL Search Order Hijacking (T1038.004)
+        Description: The article discusses mapping injection, which utilizes the NtMapViewOfSection function to map malicious code into the target process from an existing section controlled by the attacker. This technique bypasses the explicit allocation of RWX sections and avoids separate payload content copying.
+
 •	New ongoing campaign targets npm ecosystem with unique execution chain
 o	https://thehackernews.com/2023/06/new-ongoing-campaign-targets-npm.html
+The article discusses a ongoing campnaign that has discovered targeting the npm ecosystem, employing a unique execution chain to deliver an unknown payload to targeted systems. The order of installation is crucial for the success of the attack, as the first package stores a token locally, retrieved from a remote server. The second package passes this token to acquire a second script, which is executed if it meets certain conditions. he identity of the threat actor remains unknown. The article does not explicitly mention any specific TTPs associated with the discovered malicious packages on PyPI repository. It mainly focuses on the existence of the malicious packages, their potential impact, and the ongoing threat to open source software registries like PyPI and npm.
+
 •	Fileless attacks surge as cybercriminals evade cloud security defenses 
 o	https://www.csoonline.com/article/643356/fileless-attacks-surge-as-cybercriminals-evade-cloud-security-defenses.html
 •	Detecting popular Cobalt Strike Malleable C2 profile techniques
