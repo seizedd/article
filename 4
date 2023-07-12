@@ -1,21 +1,199 @@
 (U) Threat Groups:
 •	Iranian Hackers Using Windows Kernel Driver
 o	https://www.cybersecurityintelligence.com/blog/iranian-hackers-using-windows-kernel-driver-6995.html
+Summary: Iranian threat group Agrius has been using a new Windows kernel driver called Wintapix to conduct espionage campaigns and gain unauthorized access to targeted systems in the Middle East, particularly in Saudi Arabia, Jordan, Qatar, and the United Arab Emirates. The driver utilizes position-independent code called Donut to load payloads in-memory through shellcode, employing process hollowing or thread hijacking techniques. Wintapix allows the threat actors to bypass security mechanisms and execute malicious code, posing a significant cyber threat to organizations in sectors such as telecommunications, transport, industrial, and government.
+
+Key Points:
+
+    Agrius, an Iranian threat group, is using the Wintapix Windows kernel driver for espionage campaigns and unauthorized access.
+    Wintapix employs position-independent code called Donut for loading payloads using shellcode, utilizing process hollowing or thread hijacking.
+    The driver has been active since at least mid-2020, primarily targeting organizations in Saudi Arabia, Jordan, Qatar, and the United Arab Emirates.
+    The compilation dates of observed samples suggest major campaigns in August and September 2022 and February and March 2023, potentially coinciding with Exchange server vulnerabilities.
+    Wintapix allows hackers to bypass security mechanisms, execute malicious code, and remain undetected.
+    Targeted sectors include telecommunications, transport, industrial, and government, emphasizing the need for robust security measures.
+
+Novel TTPs (Matched to MITRE ATT&CK):
+
+    Position-Independent Code Execution: The use of Donut, a position-independent code, enables the loading of payloads in-memory through shellcode, employing techniques like process hollowing or thread hijacking. (Technique: Execution (T1027))
+    Kernel Drivers: Wintapix is a Windows kernel driver utilized by the threat group to bypass security mechanisms and execute malicious code. (Technique: Kernel Modules and Extensions (T1168))
 
 (U) Tactics/Techniques/Procedures:
 •	The GRU's Disruptive Playbook
 o	https://www.mandiant.com/resources/blog/gru-disruptive-playbook
+Summary: Since the invasion of Ukraine, Mandiant has observed the Russian military intelligence (GRU) using a standard five-phase playbook for disruptive operations. The playbook involves leveraging compromised edge infrastructure, living off the land using built-in tools, creating persistent access through Group Policy Objects (GPOs), deploying disruptive tools like wipers and ransomware, and telegraphing success through hacktivist personas on Telegram. The GRU's playbook aims to increase the speed, scale, and intensity of offensive cyber operations while minimizing detection, and it may be replicated in future crises with high volumes of disruptive cyber operations.
+
+Key Points:
+
+    Mandiant has tracked the GRU's disruptive operations in Ukraine using a standard five-phase playbook.
+    The phases include living on the edge, living off the land, going for the GPO, disrupt and deny, and telegraphing success.
+    The playbook combines cyber and information operations for a unified wartime capability.
+    The GRU's tactics aim to increase the speed, scale, and intensity of offensive cyber operations while minimizing detection.
+    The use of hacktivist personas on Telegram is employed to generate psychological effects and amplify the perceived impact of operations.
+    The GRU's preference is to deploy lightweight and disposable disruptive tools, contrasting with historical multifunctional tools.
+    The playbook may be replicated in future crises and conflict scenarios requiring high volumes of disruptive cyber operations.
+    Defenses against the GRU's playbook can have transferable benefits for defending against ransomware groups' tradecraft.
+
+Novel TTPs (Matched to MITRE ATT&CK):
+
+    Living on the Edge: Leveraging compromised edge infrastructure such as routers, VPNs, firewalls, and mail servers for initial access. (Technique: Exploit Public-Facing Application (T1190))
+    Living off the Land: Using built-in tools and utilities, such as PowerShell, for reconnaissance, lateral movement, and information theft. (Technique: Living off the Land (T1059))
+    Going for the GPO: Creating persistent access and deploying disruptive payloads through Group Policy Objects (GPOs). (Technique: Group Policy Modification (T1484))
+    Disrupt and Deny: Deploying lightweight disruptive tools, including wipers and ransomware, to cause immediate impact and deny access. (Technique: Data Destruction (T1485), Ransomware (T1486))
+    Telegraphing "Success": Amplifying the perception of successful disruption through hacktivist personas on Telegram, regardless of the actual impact. (Technique: Impersonation (T1091))
+
+    Living on the Edge:
+        TTP: Compromised Edge Infrastructure (Exploit Public-Facing Application, T1190)
+        TTP: Initial Access via VPN Compromise (External Remote Services, T1133)
+        TTP: Foothold Establishment on Edge Infrastructure (External Remote Services, T1133)
+
+    Living off the Land:
+        TTP: Use of Built-In Tools for Lateral Movement (Living off the Land, T1059)
+        TTP: Exploitation of Operating System Components (Exploitation of Vulnerability, T1203)
+        TTP: Information Theft Using Pre-installed Software (Collection, T1119)
+
+    Going for the GPO:
+        TTP: Privileged Lateral Movement via GPO Abuse (Group Policy Modification, T1484)
+        TTP: Impairing Defenses through GPO Manipulation (Impair Defenses, T1562)
+        TTP: Execution of Disruptive Payloads via GPOs (Scheduled Task/Job, T1053)
+
+    Disrupt and Deny:
+        TTP: Deployment of Lightweight Disruptive Tools (Data Destruction, T1485)
+        TTP: Execution of Wipers (Disk Wipe, T1561)
+        TTP: Utilization of Ransomware for Disruption (Ransomware, T1486)
+
+    Telegraphing "Success":
+        TTP: Creation of Hacktivist Personas (Impersonation, T1091)
+        TTP: Amplification of Disruption Claims via Telegram (Use of Known Infrastructure, T1583)
+        TTP: Psychological Effects Generation through Narrative Shaping (Deception, T1499)
 
 (U) Malware:
 •	Hunting for A New Stealthy Universal Rootkit Loader
 o	https://www.trendmicro.com/en_us/research/23/g/hunting-for-a-new-stealthy-universal-rootkit-loader.html
+This article discusses the findings of our investigation into a piece of a signed rootkit, whose main binary functions as a universal loader that enables attackers to directly load a second-stage unsigned kernel module.
+
+Summary and Key Points:
+
+    The article discusses the discovery of a new signed rootkit that serves as a universal loader for loading second-stage unsigned kernel modules.
+    The rootkit has been found to communicate with a large command-and-control (C&C) infrastructure associated with a Chinese threat actor targeting the gaming sector in China.
+    The malware seems to have passed through the Windows Hardware Quality Labs (WHQL) process for obtaining a valid signature.
+    The rootkit is composed of multiple variants with different signatures, indicating the use of various signing techniques by the attackers, such as abusing Microsoft signing portals, using leaked/stolen certificates, and utilizing underground services.
+    The article describes the hunting approach for modern rootkits, emphasizing the increased complexity and challenges in detecting 64-bit signed rootkits.
+    Detailed analysis of the rootkit reveals its functionality, including checking for previous instances, initializing handlers, disabling User Account Control (UAC), establishing network communication with the C&C server, loading and executing received kernel drivers in memory, achieving persistence, and implementing specific plug-ins to disable Windows Defender and redirect web browsing traffic.
+
+Novel TTPs:
+
+    Abuse of Windows Hardware Compatibility Program (WHCP) to obtain valid signatures for malicious drivers.
+    Customization of second-stage plug-ins for victim machines, including custom compiled drivers for each machine.
+    In-memory loading of kernel drivers to bypass detection and improve stealth.
+    Use of a standalone kernel driver signed directly by Microsoft, posing a higher level of trust.
+    Implementation of a proxy plug-in to install a proxy on the infected machine and redirect web browsing traffic to a remote proxy server controlled by the attacker.
+    Redirection of HTTPS traffic by installing a custom root certificate.
+    Similarities with the FiveSys rootkit in terms of functionality, code, infrastructure, and victimology, indicating a potential connection to the same threat actor.
+
+These novel TTPs highlight the advanced techniques employed by the attackers to evade detection, achieve persistence, and carry out their malicious activities. The abuse of the WHCP and the customization of plug-ins for victim machines demonstrate a level of sophistication in the attacker's approach. The use of a signed driver directly from Microsoft and the installation of a proxy for traffic redirection illustrate the attackers' efforts to bypass security measures and gain control over the compromised systems.
+
+    Abuse Elevation Control Mechanism (T1548)
+        The rootkit attempts to disable User Account Control (UAC) and Secure Desktop mode to elevate privileges.
+
+    Compromise Elevation Control Mechanism (T1548.002)
+        The rootkit modifies the registry to disable anti-spyware detection and security services.
+
+    Hooking (T1179)
+        The rootkit hooks the file system functions and the pre-create mini-filter function.
+
+    File and Directory Discovery (T1083)
+        The rootkit checks for the presence of specific files and directories related to its operations.
+
+    Data Encoding (T1132)
+        The rootkit decodes and decrypts received data from the command-and-control (C&C) server.
+
+    Execution Guardrails (T1480)
+        The rootkit bypasses the Windows native driver loader and directly loads the second-stage driver into memory.
+
+    Disabling Security Tools (T1562)
+        The rootkit disables Windows Defender, stops antivirus checks, and terminates Windows Defender processes.
+
+    Network Sniffing (T1040)
+        The rootkit redirects web browsing traffic to a custom proxy server controlled by the attacker.
+
+    Remote File Copy (T1105)
+        The rootkit reads data from a file, encodes it, and writes it to the registry.
+
+    System Services (T1569)
+        The rootkit creates a service that runs at system startup for persistence.
+
+    Abuse of Windows Hardware Compatibility Program (WHCP):
+        TTP: Abusing WHQL for Signed Driver Validation (Abuse of Functionality, T1218)
+        TTP: Using Signed Drivers for Kernel-Level Persistence (Exploitation for Persistence, T1068)
+        TTP: Revocation of Signed Drivers (Software Manipulation, T1562)
+
+    Universal Loader Functionality:
+        TTP: Direct Loading of Unsigned Kernel Module (Component Object Model Hijacking, T1122)
+        TTP: Customization of Second-Stage Plug-Ins for Victim Machines (Customized Execution, T1204)
+        TTP: Execution of Actions from Kernel Space (Kernel Modules and Extensions, T1215)
+
+    Network Communication and Command-and-Control (C&C):
+        TTP: Kernel-Level Network Communication using WSK (Network Sniffing, T1040)
+        TTP: Domain Generating Algorithm (DGA) for C&C Communication (Domain Generation Algorithms, T1568)
+        TTP: Retrieving Configuration from C&C Server (Data from Local System, T1005)
+
+    Stealth and Persistence Techniques:
+        TTP: Debug and Release Build Differentiation (Obfuscated Files or Information, T1027)
+        TTP: Disabling User Account Control (UAC) and Secure Desktop (Bypass User Account Control, T1548)
+        TTP: In-Memory Loading of Kernel Drivers (In-Memory Load, T1055)
+
+    Evasion and Anti-Defensive Measures:
+        TTP: Disabling Windows Defender (Disable or Modify Tools, T1562)
+        TTP: Hooking File System Stack (Hooking, T1179)
+        TTP: Redirection of Web Browsing Traffic (Proxy, T1090)
+
+    Similarities and Attribution:
+        TTP: Code Similarities with FiveSys Rootkit (Code Signing, T1116)
+        TTP: C&C Infrastructure Similarities with FiveSys (Commonly Used Port, T1600)
+        TTP: Targeting Gaming Sector in China (Targeted Malware, T1192)
 
 •	New TOITOIN Trojan Targets LATAM
 o	https://cyware.com/news/new-toitoin-trojan-targets-latam-b95b66fe/
+Zscaler ThreatLabz researchers have uncovered a sophisticated attack campaign targeting companies in Latin America. The campaign utilizes a trojan called TOITOIN, which employs a multi-stage infection process and XOR decryption techniques. Key stages include phishing emails with malicious links, sandbox evasion through system restarts, injection of TOITOIN into critical processes, and data collection from web browsers.
+
+Key Points:
+
+    The TOITOIN trojan is part of a highly sophisticated campaign targeting businesses in Latin America.
+    The infection process involves several stages, including phishing emails, sandbox evasion, and injection into critical processes.
+    TOITOIN collects system information and extracts data from popular web browsers.
+    The trojan uses XOR decryption to decode configuration files and employs COM Elevation Moniker to bypass user account control.
+
+Novel TTPs (Mapped to MITRE ATT&CK):
+
+    Spear Phishing Attachment (T1193) - The campaign initiates phishing emails containing malicious links to deceive users.
+    User Execution (T1204) - Users executing the malicious link trigger the infection process.
+    User Execution: Malicious File (T1204.002) - The malicious link leads to a ZIP archive containing the trojan.
+    System Network Configuration Discovery (T1016) - TOITOIN collects system information, including network configurations.
+    Input Capture: Keylogging (T1056.001) - TOITOIN extracts data from popular web browsers, potentially including credentials.
+    Bypass User Account Control (T1548.002) - TOITOIN uses the COM Elevation Moniker to execute malicious code with elevated privileges.
 
 (U) Vulnerabilities/Exploits:
 •	Microsoft mitigates China-based threat actor Storm-0558 targeting of customer email
 o	https://msrc.microsoft.com/blog/2023/07/microsoft-mitigates-china-based-threat-actor-storm-0558-targeting-of-customer-email/
+Microsoft has successfully mitigated an attack by a China-based threat actor known as Storm-0558, which targeted customer emails, primarily focusing on government agencies in Western Europe. The actor gained access to email accounts by forging authentication tokens using an acquired Microsoft account (MSA) consumer signing key. Microsoft has taken proactive steps to block further activity, replace the key, and ensure the security of consumer keys.
+
+Key Points:
+
+    Microsoft detected and investigated anomalous mail activity on June 16, 2023, which led to the discovery of the Storm-0558 attack targeting customer emails.
+    Storm-0558 used forged authentication tokens created with an acquired MSA key to gain unauthorized access to Outlook Web Access in Exchange Online (OWA) and Outlook.com.
+    The attack affected approximately 25 organizations, including government agencies, and related consumer accounts associated with these organizations.
+    Microsoft has mitigated the attack by blocking the usage of tokens signed with the acquired MSA key, replacing the key, and blocking the usage of affected tokens for impacted consumer customers.
+    The company has been in direct contact with targeted or compromised organizations to provide support and information for investigation and response.
+
+Novel TTPs (Mapped to MITRE ATT&CK):
+
+    Forge Web Credentials (T1534.001) - Storm-0558 forged authentication tokens to gain unauthorized access to Outlook Web Access and Outlook.com.
+    Impersonation of Entity (T1091) - The actor impersonated Azure AD users by exploiting a token validation issue to access enterprise mail.
+    Acquire Infrastructure (T1580) - Storm-0558 acquired an MSA key to forge tokens and gain access to customer emails.
+    Replace Keys (T1606) - Microsoft replaced the acquired MSA key to prevent further unauthorized access.
+    Communication Through Removable Media (T1092) - While not explicitly mentioned in the article, it is implied that Microsoft has been communicating with targeted organizations and partners like DHS CISA to address the issue and protect affected customers.
+
+Microsoft has successfully mitigated the Storm-0558 attack and has taken measures to ensure the safety and security of customer emails. Customers are advised that no action is required on their part, and Microsoft will continue to investigate and monitor the activity related to Storm-0558.
 o	https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/microsoft-zeroday-exploit
 
 •	Microsoft discloses more than 130 vulnerabilities as part of July’s Patch Tuesday, four exploited in the wild
@@ -25,5 +203,38 @@ o	https://blog.talosintelligence.com/microsoft-patch-tuesday-july-2023/
 o	https://arstechnica.com/security/2023/07/hackers-exploit-gaping-windows-loophole-to-give-their-malware-kernel-access/
 o	https://thehackernews.com/2023/07/hackers-exploit-windows-policy-loophole.html
 
+Hackers are utilizing open-source software designed for video game cheating to bypass Microsoft's restrictions on Windows-based malware. The software tools, HookSignTool and FuckCertVerifyTimeValidity, are being repurposed by threat actors to sign malicious system drivers, granting their malware capabilities to bypass Windows kernel mode restrictions. By exploiting a loophole related to the signing of older drivers, attackers can run their malware in kernel mode, posing a serious threat to Windows systems.
+
+Key Points:
+
+    Hackers are using open-source software tools, HookSignTool and FuckCertVerifyTimeValidity, originally intended for video game cheating, to digitally sign malicious system drivers.
+    The signed drivers allow the malware to bypass Windows kernel mode restrictions, providing the threat actors with advanced capabilities.
+    The technique exploits a loophole that allows older drivers, signed by a Windows-trusted certificate authority before July 29, 2015, to be installed and run as a service without enforcing the requirement of signing by the Developer Portal.
+    The tools modify the signing timestamp and use the Microsoft Detours package to interrupt the signing process, allowing the use of compromised or expired certificates.
+    Microsoft has released a Windows update to block the certificates identified by researchers and has implemented blocking detections to protect against maliciously used signed drivers.
+
+Novel TTPs (Mapped to MITRE ATT&CK):
+
+    Bypass User Account Control (T1088) - The attackers exploit the loophole in driver signing to bypass Windows kernel mode restrictions, effectively evading user account control.
+    Code Signing (T1116) - The threat actors use the maliciously signed drivers to load their malware into the Windows kernel, leveraging code signing to execute their malicious activities.
+    Software Packing (T1045) - The attackers modify the signing timestamp and use the Microsoft Detours package to tamper with the signing process, enabling the use of compromised or expired certificates without detection.
+    Exploit Public-Facing Application (T1190) - The hackers repurpose open-source software tools, originally designed for video game cheating, to exploit the signing process and bypass Windows kernel mode restrictions, gaining unauthorized access to critical system functions.
+    Standard Cryptographic Protocol (T1032) - The threat actors modify the CertTimeValidity function and use the DetourAttach function to tamper with the signing process, manipulating the cryptographic protocol to allow the installation and execution of malicious drivers.
+
+The actions taken by Microsoft to block the identified certificates and distribute updates to endpoints serve as a temporary mitigation, but the underlying issue of malicious drivers being used in post-exploit scenarios remains unresolved. Preventing compromises and maintaining strong security practices are crucial in defending against such attacks.
+
 •	Apple silently pulls its latest zero-day update – what now?
 o	https://nakedsecurity.sophos.com/2023/07/11/apple-silently-pulls-its-latest-zero-day-update-what-now/
+Summary:
+Apple has silently pulled its latest zero-day update, iOS and iPadOS 16.5.1 (a), shortly after its release. The reason for the removal is unclear, but speculation suggests it may be related to a User-Agent string issue in Apple's Safari browser. Users are advised to keep the update unless it causes compatibility problems and to refrain from removing it unless necessary, as it addresses a zero-day vulnerability.
+
+Key Points:
+
+    Apple released a Rapid Security Response (RSR) update, iOS and iPadOS 16.5.1 (a), to fix a zero-day exploit in Apple's WebKit code that could be used for malware attacks.
+    Shortly after its release, users reported that the update was no longer available via the Software Update settings, suggesting its removal by Apple.
+    The removal may be linked to the Safari browser's User-Agent string, which includes an appended (a) in the version number and potentially causes confusion for some websites.
+    Users who already installed the update are advised to keep it unless it interferes with their browsing experience, while those who wish to remove it can follow specific instructions.
+    The situation is unclear, and users are recommended to monitor updates from Apple for any further releases or replacements.
+
+Novel TTPs (Mapped to MITRE ATT&CK):
+None explicitly mentioned in the article.
